@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import {App} from './App';
+import { ApiClient } from './ApiClient';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+const apiCleint = new ApiClient();
 root.render(
   <React.StrictMode>
-    <App />
+    <App apiClient={apiCleint} />
   </React.StrictMode>
 );
 

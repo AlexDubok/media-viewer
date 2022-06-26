@@ -1,8 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import logo from "./logo.svg";
 
-function App() {
+import "./App.css";
+import { ApiClient } from "./ApiClient";
+
+export const App: React.FC<{ apiClient: ApiClient }> = ({ apiClient }) => {
+  useEffect(() => {
+    fetch('http://localhost:3000/getFilesList').then((res) => {
+    console.log('✅', res)
+    }).catch((err) => {
+      console.log('❌', err)
+
+    })
+    apiClient.getMediaList()
+  });
   return (
     <div className="App">
       <header className="App-header">
@@ -21,6 +32,4 @@ function App() {
       </header>
     </div>
   );
-}
-
-export default App;
+};
